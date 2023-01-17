@@ -1,9 +1,5 @@
 
 
-
-
-
-
 ## Description 
 
 ### Welcome to a Weather Web App
@@ -16,7 +12,7 @@
 
 
 
-## Installation Diretions 
+## Installation Guidelines 
 
 
 ### To run this project locally: 
