@@ -20,4 +20,5 @@
 1. Clone the repository 
 2. Run NPM (or yarn) install to install local dependencies 
 3. Sign up for an Openweathermap API key 
-4. Insert your Openweathermap API key into a .env file 
+4. Add .env file
+4. Insert your Openweathermap API key into the .env file with the variable name of

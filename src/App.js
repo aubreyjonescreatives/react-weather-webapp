@@ -1,24 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  createBrowserRouter, 
+  RouterProvider, 
+  // Route, 
+  Outlet, 
+} from 'react-router-dom'; 
+import NavBar from './components/NavBar.js'; 
+import WeatherDashboard from './pages/Weather.js'; 
+import Footer from './components/Footer.js'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+const Layout = () => {
+  return (
+    <>
+    <NavBar/> 
+    <Outlet/> 
+    <Footer/>
+
+    </>
+  )
+}
+
+
+const router = createBrowserRouter([
+
+  {
+path: '/', 
+element: <Layout />, 
+
+children: [
+  {
+    path: '/', 
+    element: <WeatherDashboard />, 
+  }
+]
+
+
+  }])
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <RouterProvider router={router}></RouterProvider>
+    
+    </>
   );
 }
 
