@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
         //
     })
 .then((response) => res.json(response.data))
-.cathc((err) => res.status(500).json({type: 'error', message:err.message}))
+.catch((err) => res.status(500).json({type: 'error', message:err.message}))
 })
 
 
