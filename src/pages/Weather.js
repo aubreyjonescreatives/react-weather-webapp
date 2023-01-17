@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv'; 
 
 dotenv.config()
 
