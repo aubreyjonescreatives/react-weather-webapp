@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 //import * as dotenv from 'dotenv'; 
 import { styled, /*alpha*/ } from '@mui/material/styles';
 //import AppBar from '@mui/material/AppBar';
@@ -92,7 +92,7 @@ const Search = styled('div')(({ theme }) => ({
 
 
 
-
+ 
 
 
 
@@ -103,6 +103,30 @@ const Search = styled('div')(({ theme }) => ({
 
 
 const Weather = () => {
+
+  const [searchInput, setSearchInput] = useState("");
+
+
+  const cities = [
+    {name: "Portland"}, 
+    {name: "Salt Lake City"}, 
+    {name: "San Antonio"}, 
+  ]; 
+
+  const handleChange = (e) => {
+    e.preventDefault(); 
+    setSearchInput(e.target.value); 
+  }; 
+  if (searchInput){
+    cities.filter((city) => {
+      return city.name.match(searchInput); 
+    }); 
+  
+  }
+
+
+
+
   return (
 <>
 
@@ -112,14 +136,29 @@ const Weather = () => {
     <Search>
           
             <StyledInputBase
+            type="search"
               placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
+             // inputProps={{ 'aria-label': 'search' }}
+              onChange={handleChange}
+              value={searchInput}
             />
               <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon 
+               
+              />
             </SearchIconWrapper>
           </Search>
 
+      <div>City Info:</div>
+
+      <div>
+      {cities.map((city, index) => {
+        <div>{city.name}</div>
+        console.log(city.name)
+
+      })}
+
+    </div>
 
     </>
   )

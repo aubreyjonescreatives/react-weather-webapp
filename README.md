@@ -22,3 +22,12 @@
 3. Sign up for an Openweathermap API key 
 4. Add .env file
 4. Insert your Openweathermap API key into the .env file with the variable name of
+
+
+
+
+
+
+## Credits: 
+
+1. https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
