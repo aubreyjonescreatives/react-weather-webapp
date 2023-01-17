@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {useWeatherContext} from '../contexts/WeatherContext';
+import { useParams } from 'react-router-dom';  
 //import * as dotenv from 'dotenv'; 
 import { styled, /*alpha*/ } from '@mui/material/styles';
 //import AppBar from '@mui/material/AppBar';
@@ -104,21 +106,34 @@ const Search = styled('div')(({ theme }) => ({
 
 const Weather = () => {
 
+  const params = useParams()
+  const weatherData = useWeatherContext()
+  console.log(weatherData)
+
+ // const history = useHistory()
+
+  
+
   const [searchInput, setSearchInput] = useState("");
 
 
-  const cities = [
-    {name: "Portland"}, 
-    {name: "Salt Lake City"}, 
-    {name: "San Antonio"}, 
-  ]; 
+  const listCities = weatherData.name.find(item => item.name === params.name )
+  console.log(listCities)
+
+  // const cities = [
+  //   {name: "Portland"}, 
+  //   {name: "Salt Lake City"}, 
+  //   {name: "San Antonio"}, 
+  // ]; 
 
   const handleChange = (e) => {
     e.preventDefault(); 
     setSearchInput(e.target.value); 
   }; 
+
+
   if (searchInput){
-    cities.filter((city) => {
+    weatherData.filter((city) => {
       return city.name.match(searchInput); 
     }); 
   
@@ -152,7 +167,7 @@ const Weather = () => {
       <div>City Info:</div>
 
       <div>
-      {cities.map((city, index) => {
+      {weatherData.map((city, index) => {
         <div>{city.name}</div>
         console.log(city.name)
 
