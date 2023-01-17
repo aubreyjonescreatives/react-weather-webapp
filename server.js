@@ -18,8 +18,10 @@ app.use((req, res, next) => {
     next(); 
 })
 
+const APIKey = process.env.WEATHER_API_KEY
+
 app.get('/', (req, res) => {
-    axios.get('', {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid=${APIKey}`, {
         //
     })
 .then((response) => res.json(response.data))
