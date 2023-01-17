@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react'; 
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+
 
 
 
@@ -9,7 +12,17 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <>
+    <Container>
+       <Navbar expand="lg" variant="light" bg="light">
+         <Container>
+           <Navbar.Brand href="#">
+           <p>Aubrey Jones Creatives Copyright &copy; 2023 Aubrey Jones</p>
+           </Navbar.Brand>
+         </Container>
+       </Navbar>
+     </Container>
+   </>
   )
 }
 
