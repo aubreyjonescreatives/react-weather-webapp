@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import { styled, /*alpha*/ } from '@mui/material/styles';
+//import AppBar from '@mui/material/AppBar';
+//import Box from '@mui/material/Box';
+//import Toolbar from '@mui/material/Toolbar';
+//import IconButton from '@mui/material/IconButton';
+//import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
+//import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import * as dotenv from 'dotenv'; 
+//import * as dotenv from 'dotenv'; 
 
-dotenv.config()
+//dotenv.config(); 
+
+
+const APIKey = process.env.WEATHER_API_KEY
 
 
 const searchHeader = {
@@ -62,7 +65,7 @@ const Search = styled('div')(({ theme }) => ({
 
 
 
-async function postData(url = '', data = {}) {
+async function postData(url = `https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid=${APIKey}`, data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -80,7 +83,7 @@ async function postData(url = '', data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
   }
   
-  postData('https://example.com/answer', { answer: 42 })
+  postData(`https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid=${APIKey}`, { answer: 42 })
     .then((data) => {
       console.log(data); // JSON data parsed by `data.json()` call
     });
