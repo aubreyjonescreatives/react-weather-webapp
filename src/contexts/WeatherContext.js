@@ -4,7 +4,9 @@ import axios from 'axios';
 
 const WeatherContext = React.createContext({
 
-weatherList: []
+weatherList: [], 
+allWeather: [], 
+favorites: [], 
 
 
 })
@@ -13,7 +15,24 @@ weatherList: []
 export const WeatherContextProvider = (props) => {
 
 const [weatherList, setWeatherList] = React.useState([])
+const [allWeather, setAllWeather] = React.useState([])
+const [favorites, setFavorites] = React.useState([])
 
+
+const updateFavorites = (displayWeather) => {
+    console.log(`The ${displayWeather.city.id} weather was added as a favorite weather`)
+
+    if (!favorites.includes(displayWeather.weather[0].id)) {
+        setFavorites((prevState) => [ ...prevState, displayWeather.weather[0].id]) 
+      } else {
+        setFavorites(() => {
+          //  console.log(`The ${mealInfo.strMeal} meal was removed from your favorite Meals`)
+          console.log(favorites) 
+          return favorites.filter((item) => item !== displayWeather.weather[0].id)
+           
+        })
+    }
+    }
 
 
 React.useEffect(() => {
@@ -21,9 +40,10 @@ React.useEffect(() => {
     const weatherURL = `/.netlify/functions/WeatherData`
     try {
     const response = await axios.get(weatherURL)
-    const cityName = await response.data 
-    console.log(cityName)
-    setWeatherList(cityName)
+    const weatherInfo = await response.data.list[0]
+    console.log(weatherInfo)
+    setWeatherList(weatherInfo)
+    setAllWeather([...weatherInfo])
     } catch (err) {
         console.log(err)
     }
@@ -35,7 +55,10 @@ React.useEffect(() => {
 
 return (
     <WeatherContext.Provider value={{
-        weatherList
+        weatherList, 
+        allWeather, 
+        favorites, 
+        updateFavorites,
     }}>
         {props.children}
     </WeatherContext.Provider>
