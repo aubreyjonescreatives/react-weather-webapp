@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 const APIKey = process.env.WEATHER_API_KEY
 
 app.get('/', (req, res) => {
-    axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${APIKey}`, {
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=42&lon=20&appid=${APIKey}`, {
         //
     })
 .then((response) => res.json(response.data))

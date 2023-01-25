@@ -2,6 +2,11 @@ const axios = require('axios')
 import JSONTEST from '../../src/json/test.json'
 
 
+
+
+
+
+
 const APIKey = process.env.WEATHER_API_KEY
 //const BaseWeatherURL = 'https://api.openweathermap.org'; 
 
