@@ -30,9 +30,9 @@ const handleCitySearchSubmit = (event) => {
   console.log(`You searched for ${findCityData}`)
 
 
-  if (findCityData = displayWeather.name) {
-    console.log(displayWeather.id)
-  }
+  if (findCityData = displayWeather.city[0].name) {
+    console.log(displayWeather.city[0].name)
+  }  
   else {
     console.log(`this is not the city you are looking for...`)
   }
