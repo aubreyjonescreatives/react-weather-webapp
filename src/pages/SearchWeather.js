@@ -6,23 +6,51 @@ import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import APIDATA from '../data/test.json'; 
 
 
-const SearchWeather = () => {
 
 
 
-  const [findFavorites, setfindFavorites] = React.useState([])
-  const {allWeather, favorites} = useWeatherContext()
+
+const SearchWeather = (props) => {
 
 
+  const { displayWeather } = props
+
+
+const [findCityData, setFindCityData] = React.useState(""); 
+
+const [findFavorites, setfindFavorites] = React.useState([])
+
+const {allWeather, favorites} = useWeatherContext()
+
+const handleCitySearchSubmit = (event) => {
+  event.preventDefault(); 
+  console.log(`You searched for ${findCityData}`)
+
+
+  if (findCityData = displayWeather.name) {
+    console.log(displayWeather.id)
+  }
+  else {
+    console.log(`this is not the city you are looking for...`)
+  }
+
+
+}
+
+
+
+
+  
 
 
 
 
 React.useEffect(() => {
  setfindFavorites((prevState) => {
-  const theWeather = allWeather.filter((displayWeather) => favorites.includes(displayWeather.id) )
+  const theWeather = allWeather.filter((displayWeather) => favorites.includes(displayWeather.name) )
   console.log(theWeather)
   return [...prevState, ...theWeather]
 })
@@ -31,27 +59,27 @@ React.useEffect(() => {
 
 
 
+
   return (
     <>
-    <div>Search Weather</div>
+    <div>Search Weather by City:</div>
    
 
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
+    <Box>
+    <form 
+    onSubmit={handleCitySearchSubmit}
     >
-      <TextField id="searchButton" placeholder="Search..." />
-   
+      <label>
+        <input 
+        type="text" 
+        value={findCityData} 
+        placeholder="City Name"
+        onChange={(e) => setFindCityData(e.target.value)}
+        /> 
+      </label>
+      <input type="submit" value="Search" />
+    </form>
 
-    <Stack direction="row" spacing={2}>
-      <Button variant="contained" href="#contained-buttons">
-        <SearchIcon></SearchIcon>
-      </Button>
-    </Stack>
 
     </Box>
 
@@ -61,7 +89,7 @@ React.useEffect(() => {
     {allWeather.map((displayWeather) => {
       return (
         <WeatherCard
-            key={displayWeather.id}
+            key={displayWeather.name}
             displayWeather={{...displayWeather}}
         />
       )
@@ -71,11 +99,13 @@ React.useEffect(() => {
 
 
 
+
+
 <Box>
     {findFavorites.map((displayWeather) => {
       return (
         <WeatherCard
-            key={displayWeather.id}
+            key={displayWeather.name}
             displayWeather={{...displayWeather}}
         />
       )

@@ -7,11 +7,11 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-//import JSONTEST from '../../json/test.json'; 
+import JSONTEST from '../../data/test.json'; 
 
 
-// const SEEDATA = JSONTEST
-// console.log(SEEDATA)
+ const SEEDATA = JSONTEST
+ console.log(SEEDATA)
 
 const cardStyles = {
   width: 345, 
@@ -50,9 +50,9 @@ const handleFavoriteClick = () => {
 
 React.useEffect(() => {
   //const FavoriteID = weather[0].id
-  favorites.includes(displayWeather.id) ? setFavorite(true) : setFavorite(false)
+  favorites.includes(displayWeather.city[0].name) ? setFavorite(true) : setFavorite(false)
   console.log(favorites)
-   }, [displayWeather.id, favorites])
+   }, [displayWeather.city[0].name, favorites])
 
 
 
@@ -62,15 +62,15 @@ React.useEffect(() => {
     <>
     <Card sx={ cardStyles}>
     <CardHeader
-    title={props.displayWeather.description}
+    title={props.displayWeather.city[0].name}
     >
 
     </CardHeader>
     <CardMedia 
     component="img" 
     height="194"
-    image={`https://openweathermap.org/img/w/${props.displayWeather.icon}.png`}
-    alt={`${props.displayWeather.main}`}
+    image={`https://openweathermap.org/img/w/${props.displayWeather.list[0].weather[0].icon}.png`}
+    alt={`${props.displayWeather.list[0].weather[0].main}`}
 />
     <CardActions >
     <IconButton aria-label="See More Info" onClick={handleFavoriteClick}>
@@ -81,7 +81,7 @@ React.useEffect(() => {
     </IconButton>
 
     </CardActions>
-    <Typography>{`${props.displayWeather.weather[0].description}`} Some Text</Typography>
+    <Typography>Temperature Feels Like:{`${props.displayWeather.list[0].main[0].feels_like}`}</Typography>
     </Card>
     
     
