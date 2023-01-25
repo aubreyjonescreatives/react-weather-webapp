@@ -19,7 +19,7 @@ const SearchWeather = () => {
 
 React.useEffect(() => {
  setfindFavorites((prevState) => {
-  const theWeather = allWeather.filter((displayWeather) => favorites.includes(displayWeather.weather[0].id) )
+  const theWeather = allWeather.filter((displayWeather) => favorites.includes(displayWeather.id) )
   console.log(theWeather)
   return [...prevState, ...theWeather]
 })
@@ -41,7 +41,7 @@ React.useEffect(() => {
     {allWeather.map((displayWeather) => {
       return (
         <WeatherCard
-            key={displayWeather[0].weather.id}
+            key={displayWeather.id}
             displayWeather={{...displayWeather}}
         />
       )
@@ -55,7 +55,7 @@ React.useEffect(() => {
     {findFavorites.map((displayWeather) => {
       return (
         <WeatherCard
-            key={displayWeather[0].weather.id}
+            key={displayWeather.id}
             displayWeather={{...displayWeather}}
         />
       )

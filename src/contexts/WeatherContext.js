@@ -20,15 +20,15 @@ const [favorites, setFavorites] = React.useState([])
 
 
 const updateFavorites = (displayWeather) => {
-    console.log(`The ${displayWeather.city.id} weather was added as a favorite weather`)
+    console.log(`The ${displayWeather.id} weather was added as a favorite weather`)
 
-    if (!favorites.includes(displayWeather.weather[0].id)) {
-        setFavorites((prevState) => [ ...prevState, displayWeather.weather[0].id]) 
+    if (!favorites.includes(displayWeather.id)) {
+        setFavorites((prevState) => [ ...prevState, displayWeather.id]) 
       } else {
         setFavorites(() => {
           //  console.log(`The ${mealInfo.strMeal} meal was removed from your favorite Meals`)
           console.log(favorites) 
-          return favorites.filter((item) => item !== displayWeather.weather[0].id)
+          return favorites.filter((item) => item !== displayWeather.id)
            
         })
     }
@@ -40,7 +40,7 @@ React.useEffect(() => {
     const weatherURL = `/.netlify/functions/WeatherData`
     try {
     const response = await axios.get(weatherURL)
-    const weatherInfo = await response.data.list[0]
+    const weatherInfo = await response.data.list[0].weather[0]
     console.log(weatherInfo)
     setWeatherList(weatherInfo)
     setAllWeather([...weatherInfo])
