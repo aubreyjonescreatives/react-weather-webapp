@@ -33,11 +33,9 @@ const videoStyles  = {
 
 const searchStyles = { 
 backgroundColor: '#fcfcfc',
-opacity: '40%',
-position: 'absolute', 
+opacity: '40%', 
 width: '50%', 
-top: '150px', 
-left: '50%', 
+top: '125px', 
 display: 'block', 
 margin: '0px auto',
 zIndex: '1000',  
@@ -63,7 +61,10 @@ const inputCardStyles = {
   }
 
   const searchInputStyles = {
-    padding: '20px'
+    padding: '50px', 
+    display: 'block', 
+    margin: '0 auto', 
+    borderRadius: '20px'
     
     
     }
@@ -75,8 +76,6 @@ const cardStyles = {
 clear: 'both', 
 display: 'block', 
 margin: '50px auto',
-position: 'absolute', 
-left: '50%', 
 top: '250px',  
 width: '500px'
 }
@@ -183,9 +182,9 @@ setFindWeatherData('')
       
       />
 <CardContent>
-   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} F</Typography> :null} &#8451 F</Typography> 
+   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} ° F</Typography> :null}</Typography> 
     <Typography>{findWeatherData.weather ? <Typography>Current Sky: {findWeatherData.weather[0].main}</Typography> : null} </Typography>
-      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} &#8451 F</Typography> : null} </Typography>
+      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} ° F</Typography> : null} </Typography>
       <Typography>{findWeatherData.main ? <Typography>Humidity: {findWeatherData.main.humidity}%</Typography> : null} </Typography>
      <Typography>{findWeatherData.wind ? <Typography>Wind Speed: {findWeatherData.wind.speed} MPH</Typography> : null} </Typography>
      </CardContent>
