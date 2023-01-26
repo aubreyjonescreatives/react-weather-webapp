@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
-// require('dotenv').config()
+
 
  const APIKey = process.env.REACT_APP_WEATHER_API_KEY
 
