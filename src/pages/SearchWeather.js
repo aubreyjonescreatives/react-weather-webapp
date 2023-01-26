@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import { Container, Row, Col } from 'react-grid-system';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -83,8 +84,9 @@ width: '500px'
 
 
 const cardImage = {
-  width: '100px', 
-  height: '100px'
+  width: '50px', 
+  height: '50px', 
+  margin: '15px'
 }
 
 
@@ -167,13 +169,7 @@ setFindWeatherData('')
 
       <Card sx={cardStyles}>
 
-    <CardHeader
-    title={findWeatherData.name}
-    >
-
-    </CardHeader>
-    
-
+<Row>=
       <CardMedia
       sx={cardImage}
       component="img" 
@@ -181,6 +177,14 @@ setFindWeatherData('')
       alt={findWeatherData.weather ? `${findWeatherData.weather.main}` : null}
       
       />
+
+    <CardHeader
+    title={findWeatherData.name}
+    >
+
+    </CardHeader>
+    
+    </Row>
 <CardContent>
    <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} ° F</Typography> :null}</Typography> 
     <Typography>{findWeatherData.weather ? <Typography>Current Sky: {findWeatherData.weather[0].main}</Typography> : null} </Typography>
