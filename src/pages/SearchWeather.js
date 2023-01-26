@@ -18,12 +18,10 @@ import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4';
 
 
 const videoStyles  = {
-  position: 'absolute', 
-  top: '0px', 
-  display: 'block', 
-  //width: '500px', 
-  //height: '500px', 
-  zIndex: '-999'
+  position: 'fixed', 
+  zIndex: '-1', 
+  width: '100%', 
+  height: '100%'
   
   
   }
@@ -35,8 +33,6 @@ const videoStyles  = {
 const searchStyles = { 
 backgroundColor: '#fcfcfc',
 opacity: '40%', 
-width: '50%', 
-top: '125px', 
 display: 'block', 
 margin: '0px auto',
 zIndex: '1000',  
@@ -78,7 +74,7 @@ clear: 'both',
 display: 'block', 
 margin: '50px auto',
 top: '250px',  
-width: '500px'
+width: '80%'
 }
 
 
@@ -140,7 +136,7 @@ setFindWeatherData('')
     <>
 
     <Box sx={videoStyles}>
-    <video autoPlay loop muted id="video" width="100%" height="auto">
+    <video autoPlay loop muted id="video" >
       <source src={CloudySkyVideo} type='video/mp4' />
     </video>
     </Box>
