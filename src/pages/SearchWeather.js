@@ -6,31 +6,78 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
+import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
 
 
 
  const APIKey = process.env.REACT_APP_WEATHER_API_KEY
 
 
-const searchStyles = {
-display: 'block', 
-margin: '0px auto'
+// background video styling 
 
 
-}
-
-const searchInputStyles = {
+const videoStyles  = {
+  position: 'absolute', 
+  top: '0px', 
   display: 'block', 
-  margin: '0px auto', 
-  textAlign: 'center'
+  //width: '500px', 
+  //height: '500px', 
+  zIndex: '-999'
   
   
   }
 
-const cardStyles = {
+
+
+// searchBox styling
+
+const searchStyles = { 
+backgroundColor: '#fcfcfc',
+opacity: '40%',
+position: 'absolute', 
+width: '50%', 
+top: '150px', 
+left: '50%', 
 display: 'block', 
-margin: '50px auto', 
+margin: '0px auto',
+zIndex: '1000',  
+borderRadius: '150px'
+
+
+}
+
+const inputCardStyles = {
+  padding: '30px', 
+  opacity: '100%', 
+  display: 'block', 
+  margin: '0px auto'
+}
+
+
+
+  const searchboxHeader = {
+    textAlign: 'center', 
+    color: 'black', 
+    opacity: '100%'
+
+  }
+
+  const searchInputStyles = {
+    padding: '20px'
+    
+    
+    }
+
+
+// card styling
+
+const cardStyles = {
+clear: 'both', 
+display: 'block', 
+margin: '50px auto',
+position: 'absolute', 
+left: '50%', 
+top: '250px',  
 width: '500px'
 }
 
@@ -49,18 +96,27 @@ const cardImage = {
 const SearchWeather = () => {
 
 
+
+
+
+
+// retrieve current weather data from weather API
+
+
 const [findWeatherData, setFindWeatherData] = React.useState({})
 
 const [weatherLocation, setWeatherLocation] = React.useState('')
 
 
-const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&units=imperial&appid=${APIKey}`
+// ${weatherLocation}
+
+const cityweatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&units=imperial&appid=${APIKey}`
  
 
 const inputLocation = (event) => {
 if (event.key === 'Enter') {
 
-  axios.get(weatherURL).then((response) => {
+  axios.get(cityweatherURL).then((response) => {
     setFindWeatherData(response.data) 
     console.log(response.data)
 })
@@ -70,13 +126,29 @@ setFindWeatherData('')
 
 }
 
+// retrieve current date and time
+
+//const date = new Date(); 
+
+//document.getElementById("dateandTime").innerHTML = date; 
+
+
+
 
   return (
     <>
-    <div>Search Weather by City:</div>
-   
+
+    <Box sx={videoStyles}>
+    <video autoPlay loop muted id="video" width="100%" height="auto">
+      <source src={CloudySkyVideo} type='video/mp4' />
+    </video>
+    </Box>
 
     <Box sx={searchStyles}>
+
+    <Card sx={inputCardStyles}>
+    <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
+  
    
    <input 
    value={weatherLocation}
@@ -87,6 +159,7 @@ setFindWeatherData('')
    sx={searchInputStyles}
    />
 
+</Card>
 
     </Box>
 
@@ -100,6 +173,7 @@ setFindWeatherData('')
     >
 
     </CardHeader>
+    
 
       <CardMedia
       sx={cardImage}
@@ -109,9 +183,9 @@ setFindWeatherData('')
       
       />
 <CardContent>
-   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} F</Typography> :null}</Typography> 
+   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} F</Typography> :null} &#8451 F</Typography> 
     <Typography>{findWeatherData.weather ? <Typography>Current Sky: {findWeatherData.weather[0].main}</Typography> : null} </Typography>
-      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} F</Typography> : null} </Typography>
+      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} &#8451 F</Typography> : null} </Typography>
       <Typography>{findWeatherData.main ? <Typography>Humidity: {findWeatherData.main.humidity}%</Typography> : null} </Typography>
      <Typography>{findWeatherData.wind ? <Typography>Wind Speed: {findWeatherData.wind.speed} MPH</Typography> : null} </Typography>
      </CardContent>
