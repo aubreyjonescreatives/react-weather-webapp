@@ -21,7 +21,8 @@ const videoStyles  = {
   position: 'fixed', 
   zIndex: '-1', 
   width: '100%', 
-  height: '100%'
+  height: '100%', 
+  top: '0px'
   
   
   }
@@ -36,7 +37,8 @@ opacity: '40%',
 display: 'block', 
 margin: '0px auto',
 zIndex: '1000',  
-borderRadius: '150px'
+borderRadius: '150px', 
+width: '80%'
 
 
 }
