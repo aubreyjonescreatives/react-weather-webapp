@@ -1,63 +1,74 @@
 import * as React from 'react';
-import { useWeatherContext } from '../contexts/WeatherContext';
-import WeatherCard from '../components/WeatherCard/WeatherCard'; 
+import axios from 'axios';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import SearchIcon from '@mui/icons-material/Search';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import APIDATA from '../data/test.json'; 
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 
+// require('dotenv').config()
+
+ const APIKey = process.env.REACT_APP_WEATHER_API_KEY
 
 
+const searchStyles = {
+display: 'block', 
+margin: '0px auto'
 
 
-const SearchWeather = (props) => {
+}
 
-
-  const { displayWeather } = props
-
-
-const [findCityData, setFindCityData] = React.useState(""); 
-
-const [findFavorites, setfindFavorites] = React.useState([])
-
-const {allWeather, favorites} = useWeatherContext()
-
-const handleCitySearchSubmit = (event) => {
-  event.preventDefault(); 
-  console.log(`You searched for ${findCityData}`)
-
-
-  if (findCityData = displayWeather.city[0].name) {
-    console.log(displayWeather.city[0].name)
-  }  
-  else {
-    console.log(`this is not the city you are looking for...`)
+const searchInputStyles = {
+  display: 'block', 
+  margin: '0px auto', 
+  textAlign: 'center'
+  
+  
   }
 
+const cardStyles = {
+display: 'block', 
+margin: '50px auto', 
+width: '500px'
+}
 
+
+
+const cardImage = {
+  width: '100px', 
+  height: '100px'
 }
 
 
 
 
-  
 
 
+const SearchWeather = () => {
 
 
-React.useEffect(() => {
- setfindFavorites((prevState) => {
-  const theWeather = allWeather.filter((displayWeather) => favorites.includes(displayWeather.name) )
-  console.log(theWeather)
-  return [...prevState, ...theWeather]
+const [findWeatherData, setFindWeatherData] = React.useState({})
+
+const [weatherLocation, setWeatherLocation] = React.useState('')
+
+
+const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&units=imperial&appid=${APIKey}`
+ 
+
+const inputLocation = (event) => {
+if (event.key === 'Enter') {
+
+  axios.get(weatherURL).then((response) => {
+    setFindWeatherData(response.data) 
+    console.log(response.data)
 })
-}, [favorites, allWeather])
+setFindWeatherData('')
 
+}
 
-
+}
 
 
   return (
@@ -65,54 +76,53 @@ React.useEffect(() => {
     <div>Search Weather by City:</div>
    
 
-    <Box>
-    <form 
-    onSubmit={handleCitySearchSubmit}
-    >
-      <label>
-        <input 
-        type="text" 
-        value={findCityData} 
-        placeholder="City Name"
-        onChange={(e) => setFindCityData(e.target.value)}
-        /> 
-      </label>
-      <input type="submit" value="Search" />
-    </form>
+    <Box sx={searchStyles}>
+   
+   <input 
+   value={weatherLocation}
+   onChange={event => setWeatherLocation(event.target.value)}
+   onKeyDown={inputLocation}
+   placeholder='Enter City'
+   type="text"
+   sx={searchInputStyles}
+   />
 
 
     </Box>
 
-  
+    {findWeatherData.name !== undefined && 
+  <Box>
 
-<Box>
-    {allWeather.map((displayWeather) => {
-      return (
-        <WeatherCard
-            key={displayWeather.name}
-            displayWeather={{...displayWeather}}
-        />
-      )
-    })}
+      <Card sx={cardStyles}>
 
-</Box>
+    <CardHeader
+    title={findWeatherData.name}
+    >
+
+    </CardHeader>
+
+      <CardMedia
+      sx={cardImage}
+      component="img" 
+      image={`https://openweathermap.org/img/w/${findWeatherData.weather[0].icon}.png`}
+      alt={findWeatherData.weather ? `${findWeatherData.weather.main}` : null}
+      
+      />
+<CardContent>
+   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} F</Typography> :null}</Typography> 
+    <Typography>{findWeatherData.weather ? <Typography>Current Sky: {findWeatherData.weather[0].main}</Typography> : null} </Typography>
+      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} F</Typography> : null} </Typography>
+      <Typography>{findWeatherData.main ? <Typography>Humidity: {findWeatherData.main.humidity}%</Typography> : null} </Typography>
+     <Typography>{findWeatherData.wind ? <Typography>Wind Speed: {findWeatherData.wind.speed} MPH</Typography> : null} </Typography>
+     </CardContent>
+    
+      </Card>
 
 
 
+  </Box>
 
-
-<Box>
-    {findFavorites.map((displayWeather) => {
-      return (
-        <WeatherCard
-            key={displayWeather.name}
-            displayWeather={{...displayWeather}}
-        />
-      )
-    })}
-
-</Box>
-
+  }
 
     </>
 

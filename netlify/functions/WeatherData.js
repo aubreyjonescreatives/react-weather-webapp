@@ -69,7 +69,7 @@ console.log(event)
 console.log(context)
 
 try {
-    const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=45.5152&lon=-122.6784&appid=${APIKey}`, {
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Portland&appid=${APIKey}`, {
         // headers: {'api-key': process.env.WEATHER_API_KEY}
     })
     return {

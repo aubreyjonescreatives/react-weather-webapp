@@ -21,7 +21,7 @@
 2. Run NPM (or yarn) install to install local dependencies 
 3. Sign up for an Openweathermap API key 
 4. Add .env file
-4. Insert your Openweathermap API key into the .env file with the variable name of
+4. Insert your Openweathermap API key into the .env file with the variable name of REACT_APP_WEATHER_API_KEY
 
 
 
@@ -30,4 +30,8 @@
 
 ## Credits: 
 
-1. https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
+
+#### Huge Thanks To: 
+
+##### Code Commerce 
+1. https://www.youtube.com/watch?v=UjeXpct3p7M

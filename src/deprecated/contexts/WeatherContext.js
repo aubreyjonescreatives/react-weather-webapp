@@ -40,7 +40,7 @@ React.useEffect(() => {
     const weatherURL = `/.netlify/functions/WeatherData`
     try {
     const response = await axios.get(weatherURL)
-    const weatherInfo = await response.data
+    const weatherInfo = await response
     console.log(weatherInfo)
     setWeatherList(weatherInfo)
     setAllWeather([...weatherInfo])
