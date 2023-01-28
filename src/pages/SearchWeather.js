@@ -31,24 +31,13 @@ const videoStyles  = {
 
 // searchBox styling
 
-const searchStyles = { 
-backgroundColor: '#fcfcfc',
-opacity: '40%', 
-display: 'block', 
-margin: '0px auto',
-zIndex: '1000',  
-width: '80%', 
-borderRadius: '25px'
-
-
-}
 
 const inputCardStyles = {
-  padding: '10px', 
-  opacity: '100%', 
+  padding: '5px', 
   display: 'block', 
   margin: '0px auto', 
-  borderRadius: '25px'
+  borderRadius: '25px', 
+  width: '80%'
 }
 
 
@@ -57,15 +46,16 @@ const inputCardStyles = {
     textAlign: 'center', 
     color: 'black', 
     opacity: '100%', 
+    foontSize: '25px'
     
 
   }
 
   const searchInputStyles = {
-    padding: '5%', 
+    padding: '10px', 
     display: 'block', 
     margin: '0 auto', 
-   // borderRadius: '100px'
+   borderRadius: '100px',
    width: '90%'
     
     
@@ -145,8 +135,7 @@ setFindWeatherData('')
     </video>
     </Box>
 
-    <Box sx={searchStyles}>
-
+  
     <Card sx={inputCardStyles}>
     <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
   
@@ -162,14 +151,13 @@ setFindWeatherData('')
 
 </Card>
 
-    </Box>
+  
 
     {findWeatherData.name !== undefined && 
   <Box>
 
       <Card sx={cardStyles}>
 <Row>
-<DateandTime />
 </Row>
 <Row>
 

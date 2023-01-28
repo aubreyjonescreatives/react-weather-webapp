@@ -38,8 +38,7 @@ const DateandTime = () => {
     return (
   <>
   <Box sx={dtStyles}>
-    <Typography>Date: {`${displayDate}`}</Typography>
-<Typography>{`${displayTime}`}</Typography>
+    <Typography>Today's Date: {`${currentDate}`}</Typography>
  
   </Box>
   
