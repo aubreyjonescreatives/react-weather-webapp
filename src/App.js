@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'; 
 import NavBar from './components/NavBar.js'; 
 import WeatherDashboard from './pages/SearchWeather.js'; 
+import DateandTime from './components/dateandtime/DateandTime'; 
 import Footer from './components/Footer.js'; 
 
 
@@ -34,6 +35,10 @@ children: [
     path: '/', 
     element: <WeatherDashboard />, 
   }, 
+  {
+    path: '/dateandtime', 
+    element: <DateandTime />, 
+  }
 
   
 ]

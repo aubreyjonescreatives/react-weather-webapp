@@ -2,14 +2,14 @@ import * as React from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-grid-system';
 import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
-
-
+import DateandTime from '../components/dateandtime/DateandTime.js'; 
 
  const APIKey = process.env.REACT_APP_WEATHER_API_KEY
 
@@ -37,17 +37,18 @@ opacity: '40%',
 display: 'block', 
 margin: '0px auto',
 zIndex: '1000',  
-borderRadius: '150px', 
-width: '80%'
+width: '80%', 
+borderRadius: '25px'
 
 
 }
 
 const inputCardStyles = {
-  padding: '30px', 
+  padding: '10px', 
   opacity: '100%', 
   display: 'block', 
-  margin: '0px auto'
+  margin: '0px auto', 
+  borderRadius: '25px'
 }
 
 
@@ -55,15 +56,17 @@ const inputCardStyles = {
   const searchboxHeader = {
     textAlign: 'center', 
     color: 'black', 
-    opacity: '100%'
+    opacity: '100%', 
+    
 
   }
 
   const searchInputStyles = {
-    padding: '50px', 
+    padding: '5%', 
     display: 'block', 
     margin: '0 auto', 
-    borderRadius: '20px'
+   // borderRadius: '100px'
+   width: '90%'
     
     
     }
@@ -76,7 +79,8 @@ clear: 'both',
 display: 'block', 
 margin: '50px auto',
 top: '250px',  
-width: '80%'
+width: '80%', 
+marginBottom: "50px"
 }
 
 
@@ -93,8 +97,6 @@ const cardImage = {
 
 
 const SearchWeather = () => {
-
-
 
 
 
@@ -149,7 +151,7 @@ setFindWeatherData('')
     <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
   
    
-   <input 
+   <TextField 
    value={weatherLocation}
    onChange={event => setWeatherLocation(event.target.value)}
    onKeyDown={inputLocation}
@@ -166,8 +168,11 @@ setFindWeatherData('')
   <Box>
 
       <Card sx={cardStyles}>
+<Row>
+<DateandTime />
+</Row>
+<Row>
 
-<Row>=
       <CardMedia
       sx={cardImage}
       component="img" 
@@ -179,9 +184,8 @@ setFindWeatherData('')
     <CardHeader
     title={findWeatherData.name}
     >
-
+      
     </CardHeader>
-    
     </Row>
 <CardContent>
    <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} ° F</Typography> :null}</Typography> 
