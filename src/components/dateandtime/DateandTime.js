@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'; 
+import React from 'react'; 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
@@ -20,7 +20,7 @@ const DateandTime = () => {
   console.log(currentDate)
 
 
-  const displayDate = currentDate.getMonth() + "-" + currentDate.getDate() + "-" + currentDate.getFullYear()
+//  const displayDate = currentDate.getMonth() + "-" + currentDate.getDate() + "-" + currentDate.getFullYear()
 
 
  // const displayDate2 = displayDate.toDateString()

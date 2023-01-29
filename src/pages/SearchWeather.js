@@ -4,12 +4,12 @@ import { Container, Row, Col } from 'react-grid-system';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
+//import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
-import DateandTime from '../components/dateandtime/DateandTime.js'; 
+//import DateandTime from '../components/dateandtime/DateandTime.js'; 
 import SunriseSunset from '../components/SunriseSunset/SunriseSunset'; 
 import '../App.css';
 

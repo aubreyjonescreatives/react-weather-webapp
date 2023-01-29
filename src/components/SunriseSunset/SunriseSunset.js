@@ -58,10 +58,10 @@ const SunriseSunset = () => {
     <div sx={Background}></div>
     <Row>
     <Col>
-    <img src={Sunrise} sx={SunriseStyles} className="SunriseStyles"/> 
+    <img src={Sunrise} sx={SunriseStyles} className="SunriseStyles" alt="Sunrise Clipart"/> 
     </Col>
     <Col>
-    <img src={Sunset} sx={SunsetStyles} className="SunsetStyles" /> 
+    <img src={Sunset} sx={SunsetStyles} className="SunsetStyles" alt="Sunset Clipart"/> 
     </Col>
     </Row>
     </Container>
