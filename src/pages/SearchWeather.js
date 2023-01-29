@@ -10,7 +10,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
 import DateandTime from '../components/dateandtime/DateandTime.js'; 
+import SunriseSunset from '../components/SunriseSunset/SunriseSunset'; 
 import '../App.css';
+
+
+
 
 
 
@@ -48,7 +52,8 @@ const inputCardStyles = {
   display: 'grid', 
   margin: '0px auto', 
   borderRadius: '5px', 
-  width: '80%'
+  width: '80%', 
+  marginTop: '20px'
 }
 
 const inputCardStylesMD = {
@@ -87,8 +92,8 @@ display: 'grid',
 justifyContent: 'center',  
 margin: '30px auto',
 top: '250px',  
-width: '%', 
-marginBottom: "150px", 
+width: '95%', 
+marginBottom: "25px", 
 
 
 }
@@ -104,7 +109,7 @@ const cardCityTitle = {
 
 const currentTempStyles = {
   textAlign: 'center', 
-  fontSize: '50px', 
+  fontSize: '60px', 
   color: '#1976d2'
 }
 
@@ -112,7 +117,8 @@ const currentTempStyles = {
 const nowWeather = {
   textAlign: 'center', 
   marginRight: 'auto', 
-  marginLeft: 'auto'
+  marginLeft: 'auto', 
+  fontSize: '30px'
 }
 
 const cardImage = {
@@ -120,16 +126,60 @@ const cardImage = {
   height: '50px', 
 }
 
-const infoRow = {
-  backgroundColor: '#fefefe'
-}
 
+// card styling 2
+
+const cardStyles2 = {
+  clear: 'both', 
+  display: 'grid', 
+  justifyContent: 'center',  
+  margin: '30px auto',
+  top: '50px',  
+  width: '95%', 
+  marginBottom: "25px", 
+  
+  
+  }
+
+const infoRow = {
+  backgroundColor: '#fefefe', 
+  
+}
 
 const weatherInfoText = {
-textAlign: 'center', 
-backgrounColor: 'gray'
+  textAlign: 'center', 
+  backgrounColor: 'gray', 
+  alignItems: 'baseline', 
+  //margin: '-15px',
+  
+  }
 
+const weatherInfoNumber = {
+  fontSize: '45px', 
+ // margin: '-15px', 
+  textAlign: 'center', 
+  fontWeight: '900'
 }
+
+const symbol = {
+fontSize: '20px', 
+color: 'navy'
+}
+
+
+// card styling 3
+
+const cardStyles3 = {
+  clear: 'both', 
+  display: 'grid', 
+  justifyContent: 'center',  
+  margin: '30px auto',
+  top: '50px',  
+  width: '95%', 
+  marginBottom: "150px", 
+  
+  
+  }
 
 
 
@@ -186,7 +236,6 @@ setFindWeatherData('')
 
     <Box>
 
-    <DateandTime/>
     </Box>
 
 <Container>
@@ -227,7 +276,6 @@ setFindWeatherData('')
 
 
 
-
   <Row>
    <Typography>{findWeatherData.main ?
     <Typography sx={currentTempStyles} className="currentTemp">{findWeatherData.main.temp} °F</Typography> :null}</Typography> 
@@ -254,29 +302,46 @@ setFindWeatherData('')
     <Row>
       <Col>
       <Typography>{findWeatherData.main ? 
-      <Typography>H: {findWeatherData.main.temp_min} °F</Typography>
+      <Typography>L: {findWeatherData.main.temp_min} °F</Typography>
       : null }</Typography>
 </Col>
 <Col>
       <Typography>{findWeatherData.main ? 
-      <Typography>L: {findWeatherData.main.temp_max} °F</Typography>
+      <Typography>H: {findWeatherData.main.temp_max} °F</Typography>
       : null }</Typography>
 </Col>
 
     </Row>
+
+    </Card>
+
+</Container>
+
+
+}
+
+
+
+
+
+{findWeatherData.name !== undefined && 
+
+<Container>
+
+     <Card sx={cardStyles2} className="cardStyles2">
 
     <CardContent>
 
 
     <Row sx={infoRow}>
       <Col>
-      <Typography>{findWeatherData.weather ? <Typography sx={weatherInfoText}>{findWeatherData.main.feels_like} ° F Feels Like</Typography> : null} </Typography>
+      <Typography>{findWeatherData.weather ? <Typography sx={weatherInfoText}><Col><Row><Typography sx={weatherInfoNumber}>{findWeatherData.main.feels_like} </Typography><Typography sx={symbol}>°F</Typography></Row></Col><Col> Feels Like</Col></Typography> : null} </Typography>
       </Col>
       <Col>
-      <Typography>{findWeatherData.main ? <Typography sx={weatherInfoText}>{findWeatherData.main.humidity}% Humidity</Typography> : null} </Typography>
+      <Typography>{findWeatherData.main ? <Typography sx={weatherInfoText}><Col><Row><Typography sx={weatherInfoNumber}>{findWeatherData.main.humidity} </Typography><Typography sx={symbol}>%</Typography></Row></Col><Col>Humidity</Col></Typography> : null} </Typography>
       </Col>
       <Col>
-     <Typography>{findWeatherData.wind ? <Typography sx={weatherInfoText}>{findWeatherData.wind.speed} MPH Wind Speed</Typography> : null} </Typography>
+     <Typography>{findWeatherData.wind ? <Typography sx={weatherInfoText}><Col><Row><Typography sx={weatherInfoNumber}>{findWeatherData.wind.speed} </Typography><Typography sx={symbol}>MPH</Typography></Row></Col><Col> Wind Speed</Col></Typography> : null} </Typography>
      </Col>
      </Row>
      
@@ -288,6 +353,39 @@ setFindWeatherData('')
   
   
   }
+
+
+
+{findWeatherData.name !== undefined && 
+
+<Container>
+
+     <Card sx={cardStyles3} className="cardStyles3">
+
+    <CardContent>
+  <Row>
+    <SunriseSunset />
+  </Row>
+
+    <Row sx={infoRow}>
+      <Col>
+      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col>{findWeatherData.sys.sunrise} </Col>Sunrise<Col></Col></Typography> : null} </Typography>
+      </Col>
+      <Col>
+      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col>{findWeatherData.sys.sunset} </Col>Sunset<Col></Col></Typography> : null} </Typography>
+      </Col>
+     
+     </Row>
+     
+     </CardContent>
+    
+      </Card>
+
+      </Container>
+  
+  
+  }
+
 
 
 </div>

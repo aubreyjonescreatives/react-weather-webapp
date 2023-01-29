@@ -37,7 +37,7 @@ const NavBar = () => {
 
   return (
     <>
- <Box sx={navStyles}>
+ <Box sx={navStyles} className="navStyles">
     <Typography sx={typeStyles}>
       Weather Dashboard
     </Typography>

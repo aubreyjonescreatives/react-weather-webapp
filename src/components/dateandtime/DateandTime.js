@@ -7,7 +7,7 @@ const dtStyles = {
 textAlign: 'center', 
 padding: '15px', 
 margin: '15px auto', 
-color: 'white'
+color: 'black'
 
 }
 
@@ -39,7 +39,7 @@ const DateandTime = () => {
     return (
   <>
   <Box sx={dtStyles}>
-    <Typography>Today's Date: {`${currentDate}`}</Typography>
+    <Typography>{`${currentDate}`}</Typography>
  
   </Box>
   
