@@ -5,8 +5,9 @@ import Typography from '@mui/material/Typography';
 
 const dtStyles = {
 textAlign: 'center', 
-padding: '5px', 
-margin: '0px auto'
+padding: '15px', 
+margin: '0px auto', 
+color: 'white'
 
 }
 

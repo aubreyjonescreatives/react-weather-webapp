@@ -33,11 +33,17 @@ const videoStyles  = {
 
 
 const inputCardStyles = {
-  padding: '5px', 
-  display: 'block', 
+  padding: '15px', 
+  display: 'grid', 
   margin: '0px auto', 
   borderRadius: '25px', 
   width: '80%'
+}
+
+const inputCardStylesMD = {
+width: '20%'
+
+
 }
 
 
@@ -54,9 +60,9 @@ const inputCardStyles = {
   const searchInputStyles = {
     padding: '10px', 
     display: 'block', 
-    margin: '0 auto', 
-   borderRadius: '100px',
-   width: '90%'
+    margin: '0px auto', 
+    borderRadius: '100px',
+    //width: '90%'
     
     
     }
@@ -135,8 +141,14 @@ setFindWeatherData('')
     </video>
     </Box>
 
+    <Box>
+
+    <DateandTime/>
+    </Box>
+
+
   
-    <Card sx={inputCardStyles}>
+    <Card sx={inputCardStyles} md={inputCardStylesMD}>
     <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
   
    
