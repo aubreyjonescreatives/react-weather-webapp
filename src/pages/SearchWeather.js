@@ -110,7 +110,8 @@ const cardCityTitle = {
 const currentTempStyles = {
   textAlign: 'center', 
   fontSize: '60px', 
-  color: '#1976d2'
+  color: '#1976d2', 
+  fontWeight: '900'
 }
 
 
@@ -124,6 +125,17 @@ const nowWeather = {
 const cardImage = {
   width: '50px', 
   height: '50px', 
+}
+
+
+const MinandMaxRow = {
+  display: 'inline-grid', 
+  paddingBottom: '25px'
+}
+
+const MinandMax = {
+ // marginBottom: '10px'
+
 }
 
 
@@ -299,18 +311,13 @@ setFindWeatherData('')
       />
    
     </Row>
-    <Row>
-      <Col>
-      <Typography>{findWeatherData.main ? 
-      <Typography>L: {findWeatherData.main.temp_min} °F</Typography>
+    <Row sx={MinandMaxRow}>
+      <Typography sx={MinandMax}>{findWeatherData.main ? 
+      <Typography sx={MinandMax}>L: {findWeatherData.main.temp_min} °F</Typography>
       : null }</Typography>
-</Col>
-<Col>
       <Typography>{findWeatherData.main ? 
       <Typography>H: {findWeatherData.main.temp_max} °F</Typography>
       : null }</Typography>
-</Col>
-
     </Row>
 
     </Card>

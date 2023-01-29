@@ -1,13 +1,14 @@
 import React from 'react'
+import { Container, Row, Col } from 'react-grid-system';
 import BackgroundImg from '../../images/sunanimation/SunDisplay0.png'
-import Sunrise from '../../images/sunanimation/sunrise.png'; 
+import Sunrise from '../../images/sunanimation/midday.png'; 
+import Sunset from '../../images/sunanimation/sunset.png'; 
 
 
 
 
-
-const sunAnimation = {
-  //  position: 'relative'
+const sunGrid = {
+//   display: 'grid'
 }
 
 const Background = {
@@ -25,12 +26,24 @@ backgroundRepeat: 'no-repeat',
 }
 
 const SunriseStyles = {
-// position: 'absolute', 
-// zIndex: '999', 
-// top: '1', 
-// width: '50px', 
-// height: '50px'
+// justifyContent: 'flex-end', 
+// //float: 'right', 
+// // position: 'absolute', 
+// // zIndex: '999', 
+// // top: '1', 
+//  width: '50px', 
+//  height: '50px'
 }
+
+const SunsetStyles = {
+//     justifyContent: 'flex-start', 
+//    // float: 'left', 
+//     // position: 'absolute', 
+//     // zIndex: '999', 
+//     // top: '1', 
+//      width: '50px', 
+//      height: '50px'
+    }
 
 
 
@@ -41,10 +54,17 @@ const SunriseStyles = {
 const SunriseSunset = () => {
   return (
     <>
-    <div sx={sunAnimation}>
+    <Container sx={sunGrid} className="sunGrid">
     <div sx={Background}></div>
-    <img src={Sunrise} sx={SunriseStyles} /> 
-    </div>
+    <Row>
+    <Col>
+    <img src={Sunrise} sx={SunriseStyles} className="SunriseStyles"/> 
+    </Col>
+    <Col>
+    <img src={Sunset} sx={SunsetStyles} className="SunsetStyles" /> 
+    </Col>
+    </Row>
+    </Container>
     </>
   )
 }
