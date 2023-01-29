@@ -87,7 +87,7 @@ display: 'grid',
 justifyContent: 'center',  
 margin: '30px auto',
 top: '250px',  
-width: '85%', 
+width: '%', 
 marginBottom: "150px", 
 
 
@@ -111,17 +111,23 @@ const currentTempStyles = {
 
 const nowWeather = {
   textAlign: 'center', 
-  display: 'block', 
+  marginRight: 'auto', 
+  marginLeft: 'auto'
 }
 
 const cardImage = {
-  width: '30px', 
-  height: '30px', 
+  width: '50px', 
+  height: '50px', 
+}
+
+const infoRow = {
+  backgroundColor: '#fefefe'
 }
 
 
 const weatherInfoText = {
-textAlign: 'center'
+textAlign: 'center', 
+backgrounColor: 'gray'
 
 }
 
@@ -183,7 +189,7 @@ setFindWeatherData('')
     <DateandTime/>
     </Box>
 
-
+<Container>
     <Card sx={inputCardStyles} md={inputCardStylesMD}>
     <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
   
@@ -199,9 +205,12 @@ setFindWeatherData('')
 
 </Card>
 
+</Container>
 
 
     {findWeatherData.name !== undefined && 
+
+<Container>
 
      <Card sx={cardStyles} className="cardStyles">
 
@@ -234,6 +243,7 @@ setFindWeatherData('')
     <Typography> {findWeatherData.weather[0].description}</Typography>: null} </Typography> 
       <CardMedia 
       sx={cardImage}
+      className="cardImage"
       component="img" 
       image={`https://openweathermap.org/img/w/${findWeatherData.weather[0].icon}.png`}
       alt={findWeatherData.weather ? `${findWeatherData.weather.main}` : null}
@@ -258,7 +268,7 @@ setFindWeatherData('')
     <CardContent>
 
 
-    <Row>
+    <Row sx={infoRow}>
       <Col>
       <Typography>{findWeatherData.weather ? <Typography sx={weatherInfoText}>{findWeatherData.main.feels_like} ° F Feels Like</Typography> : null} </Typography>
       </Col>
@@ -274,7 +284,7 @@ setFindWeatherData('')
     
       </Card>
 
-
+      </Container>
   
   
   }
