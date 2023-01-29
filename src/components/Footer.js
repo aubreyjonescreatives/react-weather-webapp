@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 const footerStyles = {
 clear: 'both',
 
+
 }
 
 const footerStylesText = {

@@ -10,9 +10,20 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
 import DateandTime from '../components/dateandtime/DateandTime.js'; 
+import '../App.css';
+
+
 
  const APIKey = process.env.REACT_APP_WEATHER_API_KEY
 
+
+
+// all weather styles 
+
+const weatherStyles = {
+
+
+}
 
 // background video styling 
 
@@ -36,7 +47,7 @@ const inputCardStyles = {
   padding: '15px', 
   display: 'grid', 
   margin: '0px auto', 
-  borderRadius: '25px', 
+  borderRadius: '5px', 
   width: '80%'
 }
 
@@ -72,21 +83,47 @@ width: '20%'
 
 const cardStyles = {
 clear: 'both', 
-display: 'block', 
-margin: '50px auto',
+display: 'grid', 
+justifyContent: 'center',  
+margin: '30px auto',
 top: '250px',  
-width: '80%', 
-marginBottom: "50px"
+width: '85%', 
+marginBottom: "150px", 
+
+
+}
+
+const cardCityTitle = {
+  justifyContent: 'center', 
+  textAlign: 'center', 
+  marginLeft: 'auto', 
+  marginRight: 'auto',  
+  fontSize: '35px', 
+  width: '100%'
+}
+
+const currentTempStyles = {
+  textAlign: 'center', 
+  fontSize: '50px', 
+  color: '#1976d2'
 }
 
 
+const nowWeather = {
+  textAlign: 'center', 
+  display: 'block', 
+}
 
 const cardImage = {
-  width: '50px', 
-  height: '50px', 
-  margin: '15px'
+  width: '30px', 
+  height: '30px', 
 }
 
+
+const weatherInfoText = {
+textAlign: 'center'
+
+}
 
 
 
@@ -134,7 +171,7 @@ setFindWeatherData('')
 
   return (
     <>
-
+    <div sx={weatherStyles}>
     <Box sx={videoStyles}>
     <video autoPlay loop muted id="video" >
       <source src={CloudySkyVideo} type='video/mp4' />
@@ -147,7 +184,6 @@ setFindWeatherData('')
     </Box>
 
 
-  
     <Card sx={inputCardStyles} md={inputCardStylesMD}>
     <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
   
@@ -163,45 +199,88 @@ setFindWeatherData('')
 
 </Card>
 
-  
+
 
     {findWeatherData.name !== undefined && 
-  <Box>
 
-      <Card sx={cardStyles}>
-<Row>
-</Row>
+     <Card sx={cardStyles} className="cardStyles">
+
 <Row>
 
-      <CardMedia
+
+    <Typography 
+    >{findWeatherData.main ?
+      <Typography sx={cardCityTitle} className="cardCityTitle">{findWeatherData.name}</Typography> :null}
+      
+    </Typography>
+
+    </Row>
+
+
+
+
+  <Row>
+   <Typography>{findWeatherData.main ?
+    <Typography sx={currentTempStyles} className="currentTemp">{findWeatherData.main.temp} °F</Typography> :null}</Typography> 
+   </Row>
+
+
+
+
+
+
+   <Row sx={nowWeather} className="nowWeather">
+    <Typography>{findWeatherData.weather ? 
+    <Typography> {findWeatherData.weather[0].description}</Typography>: null} </Typography> 
+      <CardMedia 
       sx={cardImage}
       component="img" 
       image={`https://openweathermap.org/img/w/${findWeatherData.weather[0].icon}.png`}
       alt={findWeatherData.weather ? `${findWeatherData.weather.main}` : null}
       
       />
-
-    <CardHeader
-    title={findWeatherData.name}
-    >
-      
-    </CardHeader>
+   
     </Row>
-<CardContent>
-   <Typography>{findWeatherData.main ? <Typography>Current Temp: {findWeatherData.main.temp} ° F</Typography> :null}</Typography> 
-    <Typography>{findWeatherData.weather ? <Typography>Current Sky: {findWeatherData.weather[0].main}</Typography> : null} </Typography>
-      <Typography>{findWeatherData.weather ? <Typography>Current Temp Feels Like: {findWeatherData.main.feels_like} ° F</Typography> : null} </Typography>
-      <Typography>{findWeatherData.main ? <Typography>Humidity: {findWeatherData.main.humidity}%</Typography> : null} </Typography>
-     <Typography>{findWeatherData.wind ? <Typography>Wind Speed: {findWeatherData.wind.speed} MPH</Typography> : null} </Typography>
+    <Row>
+      <Col>
+      <Typography>{findWeatherData.main ? 
+      <Typography>H: {findWeatherData.main.temp_min} °F</Typography>
+      : null }</Typography>
+</Col>
+<Col>
+      <Typography>{findWeatherData.main ? 
+      <Typography>L: {findWeatherData.main.temp_max} °F</Typography>
+      : null }</Typography>
+</Col>
+
+    </Row>
+
+    <CardContent>
+
+
+    <Row>
+      <Col>
+      <Typography>{findWeatherData.weather ? <Typography sx={weatherInfoText}>{findWeatherData.main.feels_like} ° F Feels Like</Typography> : null} </Typography>
+      </Col>
+      <Col>
+      <Typography>{findWeatherData.main ? <Typography sx={weatherInfoText}>{findWeatherData.main.humidity}% Humidity</Typography> : null} </Typography>
+      </Col>
+      <Col>
+     <Typography>{findWeatherData.wind ? <Typography sx={weatherInfoText}>{findWeatherData.wind.speed} MPH Wind Speed</Typography> : null} </Typography>
+     </Col>
+     </Row>
+     
      </CardContent>
     
       </Card>
 
 
-
-  </Box>
-
+  
+  
   }
+
+
+</div>
 
     </>
 

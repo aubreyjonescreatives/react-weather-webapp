@@ -1,19 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  display: grid; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%; 
+}
+
+p.cardStyles {
+  display: grid; 
+  justify-content: center; 
+}
+
+/* .cardCityTitle {
+  justify-content: 'center'; 
+  text-align: center; 
+  margin-right: auto; 
+  margin-left: auto;  
+  color: green; 
+  width: 100%; 
+} */
+
+/* 
+.currentTemp {
+  text-align: center;
+  margin: 0 auto; 
+  width: 100%; 
+} */
 
 
+/* 
+.nowWeather {
+  margin: 0 auto; 
+  text-align: center; 
+} */
 
 
 .MuiBox-root css-k008qs {
-margin-bottom: '0px'; 
-padding-bottom: '0px'; 
+margin-bottom: 0px; 
+padding-bottom: 0px; 
 
 
 }
 
 
-.inputStyles {
-display: 'block'; 
-margin: '0px auto'; 
-border-radius: '30px'; 
 
 
-}

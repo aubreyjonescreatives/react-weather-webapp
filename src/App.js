@@ -1,4 +1,3 @@
-import './App.css';
 import {
   createBrowserRouter, 
   RouterProvider, 
@@ -9,7 +8,7 @@ import NavBar from './components/NavBar.js';
 import WeatherDashboard from './pages/SearchWeather.js'; 
 import DateandTime from './components/dateandtime/DateandTime'; 
 import Footer from './components/Footer.js'; 
-
+import './App.css';
 
 
 const Layout = () => {
