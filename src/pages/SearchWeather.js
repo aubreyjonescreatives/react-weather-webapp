@@ -262,7 +262,7 @@ setFindWeatherData('')
 
 <Container>
     <Card sx={inputCardStyles} md={inputCardStylesMD}>
-    <Typography sx={searchboxHeader}>Search Weather by zip code:</Typography>
+    <Typography sx={searchboxHeader}>Search Weather by Zip Code:</Typography>
   
    
    <TextField 
