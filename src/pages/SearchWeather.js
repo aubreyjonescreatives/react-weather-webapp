@@ -1,6 +1,5 @@
 import * as React from 'react';
 import axios from 'axios';
-import moment from 'moment'; 
 import { Container, Row, Col } from 'react-grid-system';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,10 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
 //import DateandTime from '../components/dateandtime/DateandTime.js'; 
-import SunriseSunset from '../components/SunriseSunset/SunriseSunset'; 
-import Sunrise from '../images/sunanimation/midday.png'; 
-import Sunset from '../images/sunanimation/sunset.png'; 
-import DateandTime from '../components/dateandtime/DateandTime'; 
+import SunriseSunset from '../components/SunriseSunset/SunriseSunset';
 import '../App.css';
 
 
@@ -178,10 +174,6 @@ const weatherInfoNumber = {
   fontWeight: '900'
 }
 
-const sunImage = {
- margin: '0 auto', 
-
-}
 
 const symbol = {
 fontSize: '20px', 
