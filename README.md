@@ -35,6 +35,7 @@
 
 ##### Code Commerce 
 1. https://www.youtube.com/watch?v=UjeXpct3p7M
+2. https://mobilecoderz.com/blog/how-to-build-a-weather-application-with-react-and-react-hooks-complete-guide/
 
 #### Source that helped me solve an infinite loop and unresponsive page when React isn't totally honest about its errors
 1. https://hashnode.com/post/having-problems-with-your-react-app-not-loading-and-throwing-the-page-unresponsive-message-heres-a-fix-ckmli1ims044ro4s14xgobdhc

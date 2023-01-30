@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import moment from 'moment'; 
 import { Container, Row, Col } from 'react-grid-system';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +12,9 @@ import Typography from '@mui/material/Typography';
 import CloudySkyVideo from '../backgroundvideos/pexelsMiguelSkyTimelapse.mp4'; 
 //import DateandTime from '../components/dateandtime/DateandTime.js'; 
 import SunriseSunset from '../components/SunriseSunset/SunriseSunset'; 
+import Sunrise from '../images/sunanimation/midday.png'; 
+import Sunset from '../images/sunanimation/sunset.png'; 
+import DateandTime from '../components/dateandtime/DateandTime'; 
 import '../App.css';
 
 
@@ -159,10 +163,11 @@ const infoRow = {
 }
 
 const weatherInfoText = {
+  clear: 'both', 
   textAlign: 'center', 
-  backgrounColor: 'gray', 
+  backgroundColor: '#fdfdfd', 
   alignItems: 'baseline', 
-  //margin: '-15px',
+  padding: '-5px',
   
   }
 
@@ -173,9 +178,15 @@ const weatherInfoNumber = {
   fontWeight: '900'
 }
 
+const sunImage = {
+ margin: '0 auto', 
+
+}
+
 const symbol = {
 fontSize: '20px', 
-color: 'navy'
+color: 'navy', 
+padding: '-5px',
 }
 
 
@@ -212,8 +223,15 @@ const [weatherLocation, setWeatherLocation] = React.useState('')
 
 // ${weatherLocation}
 
-const cityweatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&units=imperial&appid=${APIKey}`
+const cityweatherURL = `https://api.openweathermap.org/data/2.5/weather?zip=${weatherLocation}&appid=${APIKey}&units=imperial`
  
+//https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid=
+
+//https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&units=imperial&appid=
+
+//https://api.openweathermap.org/data/2.5/weather?zip=${weatherLocation}&appid=
+
+//https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&appid={API key}
 
 const inputLocation = (event) => {
 if (event.key === 'Enter') {
@@ -252,7 +270,7 @@ setFindWeatherData('')
 
 <Container>
     <Card sx={inputCardStyles} md={inputCardStylesMD}>
-    <Typography sx={searchboxHeader}>Search Weather by City:</Typography>
+    <Typography sx={searchboxHeader}>Search Weather by zip code:</Typography>
   
    
    <TextField 
@@ -370,18 +388,19 @@ setFindWeatherData('')
      <Card sx={cardStyles3} className="cardStyles3">
 
     <CardContent>
+  
   <Row>
     <SunriseSunset />
   </Row>
 
     <Row sx={infoRow}>
-      <Col>
-      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col>{findWeatherData.sys.sunrise} </Col>Sunrise<Col></Col></Typography> : null} </Typography>
+    <Col>
+      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col><Row><Typography sx={symbol}>{new Date(findWeatherData.sys.sunrise * 1000).toLocaleTimeString()}</Typography></Row></Col><Col>Sunrise</Col></Typography> : null} </Typography>
       </Col>
       <Col>
-      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col>{findWeatherData.sys.sunset} </Col>Sunset<Col></Col></Typography> : null} </Typography>
+      <Typography>{findWeatherData.sys ? <Typography sx={weatherInfoText}><Col><Row><Typography sx={symbol}>{new Date(findWeatherData.sys.sunset * 1000).toLocaleTimeString()}</Typography></Row></Col><Col>Sunset</Col></Typography> : null} </Typography>
       </Col>
-     
+    
      </Row>
      
      </CardContent>

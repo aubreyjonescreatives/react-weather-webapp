@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-
 const dtStyles = {
 textAlign: 'center', 
 padding: '15px', 
@@ -14,6 +13,10 @@ color: 'black'
 
 
 const DateandTime = () => {
+
+//   moment.locale(); 
+
+// moment().format('1111'); 
   
   const currentDate = new Date(); 
 
@@ -39,7 +42,7 @@ const DateandTime = () => {
     return (
   <>
   <Box sx={dtStyles}>
-    <Typography>{`${currentDate}`}</Typography>
+    <Typography>{displayTime}</Typography>
  
   </Box>
   
