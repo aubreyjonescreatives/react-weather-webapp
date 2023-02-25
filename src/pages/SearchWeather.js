@@ -269,7 +269,7 @@ setFindWeatherData('')
    value={weatherLocation}
    onChange={event => setWeatherLocation(event.target.value)}
    onKeyDown={inputLocation}
-   placeholder='Enter City'
+   placeholder='Enter City Zip Code'
    type="text"
    sx={searchInputStyles}
    />
